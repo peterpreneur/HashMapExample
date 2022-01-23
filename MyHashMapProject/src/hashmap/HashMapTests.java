@@ -39,4 +39,19 @@ public class HashMapTests {
 		assertThat(sut.get("My Seventh String"), is(7));
 
 	}	
+	
+	@Test
+	public void should_remove_an_element_from_hashmap()
+	{
+		//arrange
+		HashMap<String, Integer> sut = new HashMap<>();
+		
+		//add
+		sut.put("My First String", 1);
+		sut.remove("My First String");
+		
+		//assert
+		assertNull(sut.get("My First String"));
+
+	}		
 }

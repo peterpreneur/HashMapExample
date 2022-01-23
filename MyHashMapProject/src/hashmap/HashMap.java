@@ -66,4 +66,46 @@ public class HashMap <K, V>
 		//return ((Entry<K, V>)elements[index]).getValue();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public V remove(K key) {
+		// 1. hash it
+		// 2. get an index
+		// 3. search for correct hashcode/key in Entry LinkedList
+		int hashCode = key.hashCode();		
+		int index = Math.abs(hashCode % elements.length);
+		
+		if (elements[index] != null)
+		{
+			
+			Entry<K,V> node = (Entry<K, V>) elements[index];
+			Entry<K,V> prev = node;			
+			Entry<K,V> next = node.getNext();
+			
+			while (node != null)
+			{
+				if (node.getHashCode() == hashCode) 
+				{
+					if (key.equals(node.getKey())) 
+					{
+						V valueToReturn = node.getValue();
+						if (prev == node) 
+						{
+							elements[index] = node.getNext();
+						} else 
+						{
+							prev.setNext(node.getNext());							
+						}
+						return valueToReturn;					
+					}
+				}
+				prev = node;
+				node = next;
+				next = next.getNext();
+			}			
+		}
+		return null;
+	}
+
+
+	
 }
