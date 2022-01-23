@@ -57,9 +57,10 @@ public class HashMap <K, V>
 						return node.getValue();
 					}
 				}
-				//prev = node;
 				node = next;
-				next = next.getNext();
+				if (next != null) {
+					next = next.getNext();					
+				}
 			}			
 		}
 		return null;

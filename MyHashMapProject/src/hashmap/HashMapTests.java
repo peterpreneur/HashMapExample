@@ -53,5 +53,27 @@ public class HashMapTests {
 		//assert
 		assertNull(sut.get("My First String"));
 
-	}		
+	}	
+	
+	@Test
+	public void should_insert_and_remove_into_hashmap_and_retrieve_it()
+	{
+		//arrange
+		HashMap<String, Integer> sut = new HashMap<>();
+		
+		//add
+		sut.put("My First String", 1);
+		sut.put("My Second String", 2);
+		sut.put("My Third String", 3);
+		sut.put("My Seventh String", 7);
+		
+		sut.remove("My Seventh String");
+
+		//assert
+		assertThat(sut.get("My First String"), is(1));
+		assertThat(sut.get("My Second String"), is(2));
+		assertThat(sut.get("My Third String"), is(3));
+		assertNull(sut.get("My Seventh String"));
+
+	}	
 }
