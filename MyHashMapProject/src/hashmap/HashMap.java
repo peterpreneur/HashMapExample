@@ -101,7 +101,7 @@ public class HashMap <K, V>
 				}
 				prev = node;
 				node = next;
-				next = next.getNext();
+				next = next.getNext();					
 			}			
 		}
 		return null;
